@@ -10,8 +10,8 @@ if (!empty($_POST)) {
     if (empty($_POST['txtuser']) || empty($_POST['txtpass'])) {
         $alert ="Ingrese su usuario y clave";
     }else{
-        $user = mysqli_escape_string ($ con, $_POST['txtuser']);
-        $pass = mysqli_escape_string ($ con, $_POST['txtpass']);
+        $user = addslashes(trim($_POST['txtuser']));
+        $pass = $_POST['txtpass'];
 
         $query = mysqli_query($objConexion,"SELECT * FROM Usuario WHERE Usuario = '$user' AND Clave = '$pass'");
         $result = mysqli_num_rows($query);
