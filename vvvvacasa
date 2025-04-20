@@ -1,0 +1,102 @@
+<?php
+include("phpinclude/headerWeb.php");
+
+ $sql2 = "SELECT b.id
+,gb.nama_gambar
+,b.judul_berita
+,b.isi_berita 
+,b.status_berita
+FROM berita b
+INNER JOIN gambar_berita gb
+ON b.id = gb.id_berita
+WHERE status_berita='Active'
+ORDER BY created_at DESC
+";
+// echo $sql;exit;
+$result2 = mysqli_query($link, $sql2);
+?>
+        
+        <!-- Page Header Start -->
+        <div class="container-fluid bnp-header py-5">
+            <div class="container text-center py-5">
+                <h1 class=" text-white mb-4 animated slideInDown" style="text-align:left;">Berita & Promosi</h1>
+                <h6 class=" text-white mb-4 animated slideInDown" style="text-align:left;">Dapatkan Informasi Mengenai Berita & Promosi di Perusahaan Kami</h6>
+            </div>
+        </div>
+        <!-- Page Header End -->
+
+        <!-- detail berita Start -->
+        <div class="container-fluid py-5 my-5">
+            <div class="container pt-5">
+                <div class="row g-5">
+                     <?php 
+
+                            if(isset($_GET['update']) && $_GET['update']!='') {
+                                  $_beritaUpdate = abs($_GET['update']);
+
+                                   require './db.php';
+                               $sql = "SELECT DISTINCT b.id
+                                            ,gb.nama_gambar
+                                            ,b.judul_berita
+                                            ,b.isi_berita 
+                                            ,b.status_berita
+                                            FROM berita b
+                                            INNER JOIN gambar_berita gb
+                                            ON b.id = gb.id_berita
+                                            WHERE status_berita='Active'
+                                            AND b.id = $_beritaUpdate
+                                            ";
+                                            // echo $sql;exit;
+                                            $result = mysqli_query($link, $sql);
+                                            $confirm = 'Apa Anda Yakin?';                                          
+
+                                            while ($row = mysqli_fetch_array($result)) {    
+                                                // echo $row['nomor_wa'];exit;
+                                               echo "
+                                                 <div class='col-lg-8 col-md-6 col-sm-12 wow fadeIn' data-wow-delay='.5s'>
+                                                        <div class='col-lg-12 col-md-6 col-sm-12 wow fadeIn' data-wow-delay='.5s'>
+                                                            <h2 class='mb-3 text-dark text-center'>".$row['judul_berita']."</h2>
+                                                            <img src='img/berita/".$row['nama_gambar']."' style='float: center; width:100%;' class='images'>
+                                                        </div>
+                                                        <div class='col-lg-12 col-md-6 col-sm-12 wow fadeIn' data-wow-delay='.5s'>
+                                                            <p class='mb-4' text-dark>".$row['isi_berita']."</p>
+                                                            <a href='bnp.php' <button type='button' class='btn btn-outline-success mb-15'>Kembali ke Berita & Promosi</button></a>
+                                                        </div>
+                                                 </div>
+                                                 <div class='col-lg-4 col-md-6 col-sm-12 wow fadeIn' data-wow-delay='.5s'>
+                                                 <br>
+                                                 <br>
+                                                 <br>
+                                                 <h1 class='text-dark'>Berita Terbaru</h1>";
+
+                                                   while ($row2 = mysqli_fetch_array($result2)) {    
+                                                   echo " 
+                                                           <br>
+                                                           <br>
+                                                           <div class='col-lg-12 col-md-6 col-sm-12 wow fadeIn media'>
+                                                                <a href='detail-berita.php?update=".$row2['id']."'>
+                                                                    <img src='img/berita/".$row2['nama_gambar']."' style='float:left;width:100px;border-radius:30%;' class='images'>
+                                                                    <h6 style='text-align:center;font-size:15px;'>&nbsp".$row2['judul_berita']." </h6>
+                                                                </a>
+                                                            </div>";
+                                                       
+                                                    }
+                                                 echo "</div>";
+                                           }
+
+
+
+                            }
+                               
+                            ?>
+                   
+                   
+                </div>
+            </div>
+        </div>
+        <!-- detail berita End -->
+
+
+
+
+<?php include("phpinclude/footerWeb.php"); ?>
