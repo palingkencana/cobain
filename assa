@@ -73,7 +73,7 @@
 	}
 	else if(@$_GET["cat"])
 	{
-		$producto1=mysqli_query($con, "select * from productos where id_categoria='abs($_GET[cat])' order by rand()");
+		$producto1=mysqli_query($con, "select * from productos where id_categoria='$_GET[cat]' order by rand()");
 		$producto=mysqli_fetch_array($producto1);
 		$Nombre_producto=$producto["Nombre_producto"];
 		$descripcion=$producto["Descripcion"];
@@ -88,7 +88,7 @@
 	}
 	else if($_GET["subcat"])
 	{
-		$producto1=mysqli_query($con, "select * from productos where id_subcategoria='abs($_GET[subcat])' order by rand()");
+		$producto1=mysqli_query($con, "select * from productos where id_subcategoria='$_GET[subcat]' order by rand()");
 		$producto=mysqli_fetch_array($producto1);
 		$Nombre_producto=$producto["Nombre_producto"];
 		$descripcion=$producto["Descripcion"];
@@ -113,7 +113,7 @@
 			  <div class='product-info fixed'>
 				<div class='left'>
 				
-				  <div class='image'> <a href='$bigimg' class='cloud-zoom' id='zoom1' rel='adjustX: 5, adjustY:0, zoomWidth:4JUdGzvrMFDWrUUwY3toJATSeNwjn54LkCnKBPRzDuhzi5vSepHfUckJNxRL2gjkNrSqtCoRUrEDAgRwsQvVCjZbRyFTLRNyDmT1a1boZVpricetag'>$ $precio1</span> </div>
+				  <div class='image'> <a href='$bigimg' class='cloud-zoom' id='zoom1' rel='adjustX: 5, adjustY:0, zoomWidth:400, zoomHeight:300, showTitle: false'> <img src='$smallimg' alt='' title='Celular' /></a> <span class='pricetag'>$ $precio1</span> </div>
 				 
 				   <div class='image-additional'>
 					<div class='image_car_holder'>
@@ -176,7 +176,7 @@
 		$subcategoria="";
 		$idproducto=abs($_GET["id"]);
 		$cat=mysqli_fetch_array(mysqli_query($con, "select id_categoria from productos where idproducto='$idproducto'"));
-		$categoria=$cat["id_categoria"];
+		$categoria=abs($cat["id_categoria"]);
 		
 			$consulta = mysqli_query($con,"select * from productos where id_categoria='$categoria' order by rand()");
 			while($registros=mysqli_fetch_array($consulta))
