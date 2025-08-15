@@ -136,7 +136,7 @@
 				
 				
 				
-				$idproducto = $registros["idproducto"];
+				$idproducto = abs($registros["idproducto"]);
 				$nombre = $registros["Nombre_producto"];
 				$precio = $registros["nuevo_precio"];
 				$disponibles = $registros["existencia"];
@@ -161,10 +161,10 @@
 				
 				
 				
-				$idproducto = $registros["idproducto"];
+				$idproducto = abs($registros["idproducto"]);
 				$nombre = $registros["Nombre_producto"];
 				$precio = $registros["nuevo_precio"];
-				$disponibles = $registros["existencia"];
+				$disponibles = abs($registros["existencia"]);
 				 echo  "
 			  			  
 						   <a href='productos.php?id=$registros[idproducto]' class='cloud-zoom-gallery' title='Celulares' , smallImage: > <img src='./$imagen' width='70px' height='70px'> </a>";
@@ -190,10 +190,10 @@
 				
 				
 				
-				//$idproducto = $registros["idproducto"];
+				$idproducto = abs($registros["idproducto"]);
 				$nombre = $registros["Nombre_producto"];
 				$precio = $registros["nuevo_precio"];
-				$disponibles = $registros["existencia"];
+				$disponibles = abs($registros["existencia"]);
 
 				 echo  "
 		  			  
@@ -282,7 +282,7 @@
           $nuevoprecio=$datos["nuevo_precio"];
           $ruta="./img_producto/imgsmall";
           $imagen=$datos["img_small"];
-          $idproducto=$datos["idproducto"];
+          $idproducto=abs($datos["idproducto"]);
 		      	echo "
               <div class='prod_hold'> <a class='wrap_link' href='productos.php?id=$idproducto'> <span class='image'><img src='$ruta/$imagen' alt='Spicylicious store' width='175px' height='175px'/></span> </a>
                 <div class='pricetag_small'><span class='price'>&nbsp;&nbsp;&nbsp;$ $precio</span> </div>
