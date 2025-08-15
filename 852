@@ -72,7 +72,7 @@
 	}
 	else if(@$_GET["cat"])
 	{
-		$producto1=abs mysqli_query($con, "select * from productos where id_categoria='$_GET[cat]' order by rand()");
+		$producto1=mysqli_query(abs($con, "select * from productos where id_categoria='$_GET[cat]' order by rand()"));
 		$producto=mysqli_fetch_array($producto1);
 		$Nombre_producto=$producto["Nombre_producto"];
 		$descripcion=$producto["Descripcion"];
