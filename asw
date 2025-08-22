@@ -1,31 +1,32 @@
-
-
-</div>
 <?php
+$id=abs($_GET["id"]);
 require("./funciones/conex.php");
 $conex=Conexion();
-$noticias=mysqli_query($conex,"SELECT * FROM `noticias` ORDER BY `fecha` DESC LIMIT 4");
+$noticias=mysqli_query($conex,"SELECT * FROM `noticias` where id='$id'");
 
+$nota=mysqli_fetch_array($noticias);
+
+disconnectDB($conex);
 
 ?>
 <html>
 <head>
 <title>IMCUFIDEZ  Zinacantepec</title>
+<link rel="icon" type="image/x-icon" href="./img/icon.ico">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <link rel="stylesheet" type="text/css" href="./css/estilo.css">
-<link rel="stylesheet" type="text/css" href="./css/actividad.css">
-<link rel="stylesheet" type="text/css" href="./css/slider.css">
+<link rel="stylesheet" type="text/css" href="./css/cabildo.css">
+<link rel="stylesheet" type="text/css" href="./css/contacto.css">
 <link rel="stylesheet" type="text/css" href="./css/noticias.css">
-<link rel="stylesheet" href="./css/owl.carousel.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-<!--<style>body{filter:grayscale(1);}</style>-->
 </head>
 <body>
 <header>
 <div class="con_log">
 <img class="logo" src="./img/incufidez.png">
-<!--<img class="barra" src="./img/barra.png" style="width:100%;padding:0;" />-->
+<img class="barra" src="./img/barra.png" style="width:100%;padding:0;" />
 </div>
 </header>
 <div class="contenedorm">
@@ -58,12 +59,8 @@ $noticias=mysqli_query($conex,"SELECT * FROM `noticias` ORDER BY `fecha` DESC LI
         <a class="nav-link" href="contacto.php">Contacto <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item ">
-        <a class="nav-link" href="noticias.php">Últimas Noticias <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="noticias.php">Útimas Noticias <span class="sr-only">(current)</span></a>
       </li>
-       <li class="nav-item ">
-        <a class="nav-link" href="reglamentos.php">Reglamentos <span class="sr-only">(current)</span></a>
-      </li>
-
 
 
 
@@ -73,333 +70,41 @@ $noticias=mysqli_query($conex,"SELECT * FROM `noticias` ORDER BY `fecha` DESC LI
 </div> 
 </div> 
 
+<div class="encabezado">
+<h2>Útimas Noticias</h2>
 
- <div class="container">
-<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-  <ol class="carousel-indicators">
-    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-  </ol>
-  <div class="carousel-inner">
-    <!--<div class="carousel-item active">
-      <img src="./img/carrera.jpg" class="d-block w-90 mx-auto slidimg" alt="...">
-    </div>
-     <div class="carousel-item ">
-      <img src="./img/carr.jpg" class="d-block w-90 mx-auto slidimg" alt="...">
-    </div>-->
-	<div class="carousel-item active">
-      <a class="nav-link" href="https://www.facebook.com/permalink.php?story_fbid=608865068359188&id=100077070994157&ref=embed_post" target="_blank"><img src="./img/CAR5K.jpg" class="d-block w-70 mx-auto  slidimg" alt="..." ></a>
-    </div>
-    <div class="carousel-item">
-      <a class="nav-link" href="https://www.facebook.com/permalink.php?story_fbid=608822085030153&id=100077070994157&ref=embed_post" target="_blank"><img src="./img/LNZ2025.jpg" class="d-block w-70 mx-auto  slidimg" alt="..." ></a>
-    </div>
-    <div class="carousel-item">
-      <a class="nav-link" href="https://www.facebook.com/permalink.php?story_fbid=608865068359188&id=100077070994157&ref=embed_post" target="_blank"><img src="./img/CAR5K.jpg" class="d-block w-70 mx-auto  slidimg" alt="..." ></a>
-    </div>
-    <div class="carousel-item">
-      <a class="nav-link" href="https://www.facebook.com/permalink.php?story_fbid=608822085030153&id=100077070994157&ref=embed_post" target="_blank"><img src="./img/LNZ2025.jpg" class="d-block w-100 slidimg" alt="..." ></a>
-    </div>
-  </div>
-  <button class="carousel-control-prev" type="button" data-target="#carouselExampleIndicators" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-target="#carouselExampleIndicators" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </button>
+<div class="migajas">
+<a style="color:white;"href="index.php">Inicio</a>
+<a>/Útimas Noticias</a>
 </div>
- </div>
- <br>
 
+</div>
+
+
+ 
+<h3  class="tema">Conoce las acciones que el IMCUFIDEZ esta realizando para ti.</h3> 
+<br>
+<br>
 <div class="container">
-<h2 class="titulos_centro">Últimas Noticias</h2>
+	<div class="body_nota">
+  <h1><?php echo $nota["nombre"]; ?></h1>
 
-<div class="notas">
-  <?php
+<img src="./img_not/<?php echo $nota["imagen"]?>">
 
-foreach($noticias as $nuevo_not){
-
-
-  echo "<a href='nota.php?id=".$nuevo_not["id"]."'><div class='item_notas'><h5>".$nuevo_not["nombre"]."</h5><img src='./img_not/".$nuevo_not["imagen"]."'></div></a>";
-
-}
-
-disconnectDB($conex);
-?>
-
-
+<p><?php echo $nota["texto"];?></p>
+		
+	</div>
 </div>
+ 
 
-</div>
 
-<br>
-<br>
 
-<div class="Container">
-  <h2 class="titulos_principales">Avisos y Convocatorias</h2>
-</div>
 
- <div class=" container actividades">
 
-  <div class="divicion">
 
-    <div class="item_actividad">
-      <img src="./img/locura.jpg">
-       <div class="titulo">
-        <h5>Aventura Deportiva 2</h5>
-       </div>
-   </div>
-   </div>
 
-   <div class="divicion">
-    <div class="item_actividad">
-      <img src="./img/infc.jpg">
-       <div class="titulo">
-        <h5>Décima Carrera del Marisco</h5>
-       </div>
-   </div>
-   </div>
-   <div class="divicion">
-    <div class="item_actividad">
-      <img src="./img/sicced.jpg">
-       <div class="titulo">
-        <h5>Sistema de Capacitación y Certificación para Entrenadores Deportivos</h5>
-       </div>
-   </div>
-   </div>
 
-    
 
-</div>
-    
-
- <br>
- <br>
-<br>
-<br>
-<!--
-
-<div class="container cuadro1 ">
-
-  <div class=" subcuadro" id="conr">
-    <div class="row">
-      <div class="col-12 col-md-3 col-lg-3 c1 1">
-       <a href="eventos.php">EVENTOS DEPORTIVOS</a>
-      </div>
-      <div class="col-12 col-md-3 col-lg-3  c2">
-      <a href="eventos.php">CONVOCATORIAS</a>
-      </div>
-      <div class="col-12 col-md-3 col-lg-3  c3">
-      <a href="noticias.php">ÚLTIMAS NOTICIAS</a>
-      </div>
-      <div class="col-12 col-md-3 col-lg-3 c4">
-      <a href="#">CONTACTO</a>
-      </div>
-
-
-
-
-
-    </div>
-
-
-
-  </div>
-</div>
-
--->
-<br>
-<!--
-<div class="Container">
-  <h2 class="titulos_principales">Actividades Deportivas</h2>
-</div>
-
-
-<div class="container mt-2 mb-2 position-relative">
-<div class="owl-carousel owl-theme">
-            <div class="item">
-				<div class="card">
-					<img src="./img/king.jpg">
-					<div class="content">
-          <h1>Información:</h1>
-					<h3>7229188002</h3>
-					</div>
-			 	</div>
-            </div>
-            <div class="item">
-				<div class="card">
-					<img src="./img/boxeo.jpg">
-					<div class="content">
-          <h1>Información:</h1>
-					<h3>7229188002</h3>
-					</div>
-			 	</div>  
-
-
-            </div>
-            <div class="item">
-			<div class="card">
-					<img src="./img/karate.jpg">
-					<div class="content">
-          <h1>Información:</h1>
-					<h3>7229188002</h3>
-					</div>
-			 	</div>
-            </div>
-            <div class="item">
-              
-			<div class="card">
-					<img src="./img/tae.jpg">
-					<div class="content">
-          <h1>Información:</h1>
-					<h3>7229188002</h3>
-					</div>
-			 	</div>  
-
-
-
-            </div>
-
-
-            <div class="item">
-              
-              <div class="card">
-                  <img src="./img/atle.jpg">
-                  <div class="content">
-                  <h1>Información:</h1>
-					<h3>7229188002</h3>
-                  </div>
-                 </div>  
-        
-        
-        
-                    </div>
-                    <div class="item">
-              
-              <div class="card">
-                  <img src="./img/bas.jpg">
-                  <div class="content">
-                  <h1>Información:</h1>
-					<h3>7229188002</h3>
-                  </div>
-                 </div>  
-        
-        
-        
-                    </div>
-
-
-            <div class="item">
-			<div class="card">
-					<img src="./img/mma.jpg">
-					<div class="content">
-          <h1>Información:</h1>
-					<h3>7229188002</h3>
-					</div>
-			 	</div>  
-
-
-            </div>
-            
-            
-            <div class="item">
-			<div class="card">
-					<img src="./img/ciclis.jpg">
-					<div class="content">
-					<h1>Información:</h1>
-					<h3>7229188002</h3>
-					</div>
-			 	</div> 
-            </div>
-
-            <div class="item">
-			<div class="card">
-					<img src="./img/fut.jpg">
-					<div class="content">
-					<h1>Información:</h1>
-					<h3>7229188002</h3>
-					</div>
-			 	</div> 
-            </div>
-            
-            
-          </div>
-</div>
--->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--
-
- <div class="container-fluid  ultimas">
-        <div class="container p-4  ">
-            <h1 class="ultimas_titulo">Últimas Noticias</h1>
-            <p class="ultimas_titulo">Conoce las Acciones más sobresalientes que se realizan por el Gobierno Municipal </p>
-           <hr>
-            
-            <div class="row p-3">
-                <div class="col-12 col-md-4 subnota">
-                <img class="d-block w-100  popular_img" src="./img/juguete.jpg">
-                <h3>Obsequio de Juguetes a niñas y niños del centro de educación Preescolar Juan de la Barrera  </h3>
-                <p>Era una promesa que había hecho con la comunidad y con gran emoción, acompañado de mi esposa Jessica Rios Lara, tuvimos la bendición de poder obsequiar un pequeño juguete con motivo de los #ReyesMagos a niñas y niños del Centro de Educación Preescolar Juan de la Barrera y para algunos pequeños de la zona en el Barrio de México en donde desafortunadamente existen muchísimas carencias, pero estaremos trabajando arudamente para poder atender sus necesidades.</p>
-                </div>
-                
-                <div class="col-12 col-md-4 subnota">
-                    <img class="d-block w-100  popular_img" src="./img/protesta.jpg">
-                    <h3>Primera Sesión Extraordinaria de Cabildo del Ayuntamiento 2022-2024 </h3>
-                <p>En la Primera Sesión Extraordinaria de Cabildo del Ayuntamiento 2022-2024 se aprobó el nombramiento y Tomé Protesta de Ley a las y los Servidores Públicos que estarán al servicio de Zinacantepec. </p>
-                   
-                </div>
-                <div class="col-12 col-md-4 subnota">
-                    <img class="d-block w-100  popular_img" src="./img/mando.jpg">
-                    <h3>Cambio de Mando de los cuerpos de Seguridad Pública  </h3>
-                <p>Para dar cumplimiento con lo establecido en la Ley Orgánica Municipal del Estado de México y para velar por la seguridad de #Zinacantepec, en los primeros minutos de este 2022 se realizó el Cambio de Mando de los cuerpos de Seguridad Pública.</p>
-
-
-                </div>
-
-
-
-
-            </div>
-
-
-
-        </div>
-
-</div>
-
-
--->
 
 <div id="interes" class="container-fluid">
     <h6>ENLACES DE INTERES</h6>
@@ -429,7 +134,7 @@ disconnectDB($conex);
 
 <footer>
 
-<!--<img class="barra_pie" src="./img/barra.png" style="width:100%;padding:0;" />-->
+<img class="barra_pie" src="./img/barra.png" style="width:100%;padding:0;" />
 
 <div class="container p-2 pie">
   <div class="row">
@@ -469,7 +174,7 @@ disconnectDB($conex);
             </ul>
     </div>
     <div class="col-md-3">
-    <img id="lox"src="./img/iveda.png">
+    <img id="lox"src="./img/incufidez.png">
             <ul class="red">
             <i class="fa fa-facebook-square fa-lg "></i>
             <i class="fa fa-twitter-square fa-lg "></i>
@@ -532,44 +237,11 @@ disconnectDB($conex);
 
 </body>
 </html>
-<script src="./js/jquery.js"></script>
-<script src="./js/menu.js"></script>
-<script src="./js/inicio.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="./js/jquery.js" ></script>
+
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script>
-<script src="./js/owl.carousel.js"></script>
-<script>
-            $(document).ready(function() {
-              var owl = $('.owl-carousel');
-              owl.owlCarousel({
-                items: 3,
-                loop: true,
-                margin: 7,
-				nav:true,
-                autoplay: true,
-                autoplayTimeout: 2000,
-                autoplayHoverPause: true,
-				responsive:{
-					0:{
-						items:1,
-						
-					},
-					600:{
-						items:3,
-						
-					},
-					1000:{
-						items:3,
-					
-					}
-				}
-              });
-              $('.play').on('click', function() {
-                owl.trigger('play.owl.autoplay', [1000])
-              })
-              $('.stop').on('click', function() {
-                owl.trigger('stop.owl.autoplay')
-              })
-            })
-          </script>    
+<script type="text/javascript" src="./js/nota.js" ></script>
+<script type="text/javascript" src="./js/menu.js" ></script>
+ 
