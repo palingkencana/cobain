@@ -1,0 +1,360 @@
+<?php
+require './php_function/funciones.php';
+?>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>DIF Zinacantepec</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <?php
+        $csslibs = ["css_header" => "y", "css_body" => "y", "pie" => "y", "noticias" => "y"];
+        printCSSlibs($csslibs);
+    ?>
+    <link rel="stylesheet" type="text/css" href="./css/animation.css">
+    <link rel="stylesheet" type="text/css" href="./css/particulas.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Great+Vibes&family=Lato&family=Open+Sans&family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.core.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.theme.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link rel="stylesheet" type="text/css" href="./css/inicio.css">
+
+    <style>
+        .pdf-preview-container {
+            text-align: center;
+            margin-top: 30px;
+            margin-bottom: 30px; /* Espacio para los botones debajo */
+        }
+        .pdf-preview-container iframe {
+            border: 1px solid #ddd;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            width: 80%; /* Ancho de la previsualización */
+            height: 400px; /* Altura de la previsualización */
+            max-width: 700px; /* Máximo ancho para evitar que sea demasiado grande en pantallas amplias */
+        }
+        .pdf-preview-container .view-full-pdf-btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: #007bff; /* Color azul, puedes cambiarlo */
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        .pdf-preview-container .view-full-pdf-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v12.0" nonce="abc123"></script>
+
+    <?php require './header.php'; ?>
+
+    <div class="baner" data-aos="fade-down">
+        <div class="fondos">
+            </div>
+        <div class="banner_text">
+            <h1>DIF Zinacantepec</h1>
+            <h2>Juntos Avanzamos</h2>
+        </div>
+    </div>
+    <div class="sliderA">
+        <div class="glide">
+            <div class="glide__track" data-glide-el="track">
+                <ul class="glide__slides">
+                    <?php
+                        $folder = './images_carrousel';
+                        $files = array_diff(scandir($folder), array('.', '..'));
+                        sort($files); // Ordena para un recorrido consistente
+                        foreach ($files as $file) {
+                            if (preg_match('/\.(jpg|jpeg|png|gif)$/i', $file)) {
+                                echo '<li class="glide__slide">
+                                    <a href="'.$folder.'/'.$file.'" data-fancybox="gallery">
+                                        <img src="'.$folder.'/'.$file.'" alt="Imagen del carrusel">
+                                    </a>
+                                </li>';
+                            }
+                        }
+                    ?>
+                </ul>
+            </div>
+            <div class="glide__arrows" data-glide-el="controls">
+                <button class="glide__arrow glide__arrow--left" data-glide-dir="<">Prev</button>
+                <button class="glide__arrow glide__arrow--right" data-glide-dir=">">Next</button>
+            </div>
+            <div class="glide__bullets" data-glide-el="controls[nav]"></div>
+        </div>
+    </div>
+    
+    ---
+
+    <div class="pdf-preview-container" data-aos="fade-up">
+        <h2 class="titulo">Política de Erradicación del Trabajo Infantil 2025</h2>
+        <iframe 
+            src="files/Politica de Erradicacion del Trabajo Infantil 2025.pdf" 
+            title="Previsualización de la Política de Erradicación del Trabajo Infantil 2025" 
+            frameborder="0"
+        ></iframe>
+        <br>
+        <a href="files/Politica de Erradicacion del Trabajo Infantil 2025.pdf" target="_blank" class="view-full-pdf-btn">
+            Ver Política Completa
+        </a>
+    </div>
+
+    ---
+
+    <div class="button_informes" data-aos="fade-up">
+        <a href="pdf/Primer%20Informe%20de%20Gobierno.pdf" target="_blank">
+            <button class="button">
+                <img src="./img/PrimerInforme.png" alt="Primer Informe">
+            </button>
+        </a>
+        <a href="pdf/Segundo%20Informe%20de%20Gobierno.pdf" target="_blank">
+            <button class="button">
+                <img src="./img/SegundoInforme.png" alt="Segundo Informe">
+            </button>
+        </a>
+        <a href="pdf/Tercer Informe de Gobierno Digital.pdf" target="_blank">
+            <button class="button">
+                <img src="./img/TercerInforme.png" alt="Tercer Informe">
+            </button>
+        </a>
+    </div>
+
+    <div class="accordion-container" data-aos="fade-up">
+        <h2 class="titulo">Programas del DIF Municipal</h2>
+        <div class="accordion">
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <h3>Alimentación y Nutrición Familiar</h3>
+                    <i class="fa fa-plus toggle-icon"></i>
+                </div>
+                <div class="accordion-content">
+                    <img src="./img/horta.jpg" alt="Alimentación y Nutrición Familiar">
+                    <p>Mejorar los niveles nutricionales de los grupos más vulnerables de la población, implementando acciones aplicadas en favor de las familias de escasos recursos.</p>
+                    <p><strong>Conoce los servicios de alimentación y nutrición familiar en Zinacantepec</strong></p>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <h3>Atención al Adulto Mayor</h3>
+                    <i class="fa fa-plus toggle-icon"></i>
+                </div>
+                <div class="accordion-content">
+                    <img src="./img/adulto.jpg" alt="Atención al Adulto Mayor">
+                    <p>Coordinar, promover, apoyar y fomentar acciones públicas para personas mayores, protegiéndolas y orientándolas para encontrar soluciones a sus problemáticas.</p>
+                    <p><strong>Conoce los servicios de atención al adulto mayor en Zinacantepec</strong></p>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <h3>Salud, Prevención y Bienestar Familiar</h3>
+                    <i class="fa fa-plus toggle-icon"></i>
+                </div>
+                <div class="accordion-content">
+                    <img src="./img/salud py bf.jpg" alt="Salud, Prevención y Bienestar Familiar">
+                    <p>Desarrollar acciones de prevención y promoción de la salud mental a través de programas especializados.</p>
+                    <p><strong>Conoce los servicios</strong></p>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <h3>Atención a la discapacidad</h3>
+                    <i class="fa fa-plus toggle-icon"></i>
+                </div>
+                <div class="accordion-content">
+                    <img src="./img/uris.jpg" alt="Atención a la discapacidad">
+                    <p>Procurar acciones para el desarrollo integral de familias y grupos en situación de vulnerabilidad, contribuyendo a mejorar su calidad de vida.</p>
+                    <p><strong>Conoce los servicios</strong></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="procu" data-aos="fade-up">
+        <a href="./pdf/Triptico_Proteccion_de_niñas_niños_y_adolecentes_2025.pdf">
+            <img src="./img/procu.png" alt="Procuraduría">
+        </a>
+    </div>
+
+    <div class="ventana" data-aos="fade-up">
+        <div class="objetivo">
+            <h1>DIF Zinacantepec</h1>
+            <p>Tenemos como objetivo brindar asistencia social orientada a la protección de la infancia, las personas con discapacidad, los adultos mayores y grupos vulnerables...</p>
+        </div>
+    </div>
+
+    <h2 class="titulo">Últimas Noticias</h2>
+    <div class="body_text">
+        <p>Conoce las acciones más sobresalientes que el DIF Municipal realiza para ti</p>
+        <br>
+        <div class="notas">
+        </div>
+    </div>
+
+    <h2 class="titulo" data-aos="fade-up">Contáctanos a través</h2>
+    <div class="encuentranos" data-aos="fade-up">
+        <div class="fb_contact">
+            <h2 class="text-center">Siguenos en Facebook</h2>
+            <div class="fb-page" data-href="https://www.facebook.com/profile.php?id=100076585917727" data-tabs="timeline" data-width="340" data-height="500" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+                <blockquote cite="https://www.facebook.com/profile.php?id=100076585917727" class="fb-xfbml-parse-ignore">
+                    <a href="https://www.facebook.com/profile.php?id=100076585917727">Facebook</a>
+                </blockquote>
+            </div>
+        </div>
+        <div class="contacto_container">
+            <form class="contacto" id="contact-form" action="process_contact.php" method="POST">
+                <label>Nombre:</label>
+                <input type="text" placeholder="Ingresa tu nombre" name="nombre" required>
+                <label>Correo:</label>
+                <input type="email" placeholder="Ingresa tu correo" name="correo" required>
+                <label>Teléfono:</label>
+                <input type="text" placeholder="Ingresa tu teléfono" name="telefono" required>
+                <label>Mensaje:</label>
+                <textarea placeholder="Ingresa un mensaje" name="mensaje" rows="4" required></textarea>
+                <button type="submit" class="btn btn-primary d-block mx-auto">Enviar</button>
+            </form>
+        </div>
+    </div>
+
+    <br><br>
+    <?php require './pie.php'; ?>
+
+    <div id="modal" class="modal closse_img">
+        <div class="cont-modal">
+            <div class="cerrar">X</div>
+            <div class="nota_body">
+                <h1></h1>
+                <img src="">
+            </div>
+        </div>
+    </div>
+
+    <?php
+        $jslibs = ["jquery" => "y", "traercarrucel" => "y", "traernoticias" => "y"];
+        printJSlibs($jslibs);
+    ?>
+    <button id="back-to-top" title="Back to Top">&#8679;</button>
+
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/glide.min.js"></script>
+    <script src="./js/carousel.js"></script>
+    <script src="./js/main.js"></script>
+    <script src="./js/contacto.js"></script>
+    <script src="./js/accordion-custom.js"></script>
+
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script>
+        $(function () {
+            $("#accordion").accordion({
+                disabled: false,
+                heightStyle: "content"
+            });
+        });
+    </script>
+    <script>
+        window.interdeal = {
+            "sitekey": "56f381e3fb0cf66d2a7f6e8266065d16",
+            "Position": "Left",
+            "Menulang": "ES-MX",
+            "domains": {
+                "js": "https://cdn.equalweb.com/",
+                "acc": "https://access.equalweb.com/"
+            },
+            "btnStyle": {
+                "vPosition": ["80%", null],
+                "scale": ["0.8", "0.8"],
+                "color": {
+                    "main": "#cc1ec1",
+                    "second": ""
+                },
+                "icon": {
+                    "type": 7,
+                    "shape": "semicircle",
+                    "outline": false
+                }
+            }
+        };
+        
+        (function (doc, head, body) {
+            var coreCall = doc.createElement('script');
+            coreCall.src = window.interdeal.domains.js + 'core/4.4.1/accessibility.js';
+            coreCall.defer = true;
+            coreCall.integrity = 'sha512-tq2wb4PBHqpUqBTfTG32Sl7oexERId9xGHX2O3yF91IYLII2OwM1gJVBXGbEPaLmfSQrIE+uAOzNOuEUZHHM+g==';
+            coreCall.crossOrigin = 'anonymous';
+            coreCall.setAttribute('data-cfasync', true);
+            body ? body.appendChild(coreCall) : head.appendChild(coreCall);
+        })(document, document.head, document.body);
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            easing: 'slide',
+            once: true
+        });
+        // Forzamos un refresco de AOS al cargar, para que se active correctamente al llegar a la sección
+        window.addEventListener('load', function() {
+            AOS.refreshHard();
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!--<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <guión>
+        document.addEventListener("DOMContentLoaded", función () {
+            // Este SweetAlert2 se mostrará CADA VEZ que se carga la página
+            Swal.fire({
+                título: 'Política de Erradicación del Trabajo Infantil 2025',
+                html: `
+                    <div style="ancho:100%; alto:75vh;">
+                        <iframe
+                            src="files/Politica de Erradicacion del Trabajo Infantil 2025.pdf"
+                            estilo="ancho:100%; alto:100%; borde:ninguno;">
+                        </iframe>
+                    </div>
+                `,
+                showConfirmButton: falso,
+                mostrarBotónCerrar: verdadero,
+                ancho: '95vw',
+                relleno: '0',
+                fondo: '#fff',
+                abrió: () => {
+                    // Puedes agregar lógica aquí si es necesario al abrir el modal
+                }
+            });
+            // Se ha eliminado: sessionStorage.setItem('politicaInfantilMostrada', 'true');
+        });
+    </script>-->
+<div class="svn" style="position: absolute; left: -9999px; top: -9999px; width: 1px; height: 1px; overflow: hidden;">
+    <a href="https://www.butanofacil.com/">slot 1000</a>
+    <a href="https://uvt.unju.edu.ar/">togel online</a>
+    <a href="https://germanboard.org/">slot toto</a>
+    <a href="https://www.transportesmatos.pt/">toto slot</a>
+    <a href="https://watervliethousing.org/">mahjong ways</a>
+    <a href="https://www.matosmix.pt/">agen gacor</a>
+    <a href="https://slot-toto.germanboard.org/">toto slot gacor</a>
+    <a href="http://ecwc.gov.et/nit/">agen gacor</a>
+    <a href="https://disbangan.pasarjaya.co.id/dist/">situs toto</a>
+    <a href="https://www.shoppersdepr.com/">Sv388</a>
+    <a href="https://www.speedlinks.com/">slot pulsa</a>
+    <a href="https://www.ismaildeliveredtoday.com/">agen slot</a>
+    <a href="https://www.federaciobaleardetrot.com/boletines/">apo388</a>
+    <a href="https://www.farmaciasdepr.com/">sv388</a>
+    <a href="https://www.fprtm.com/">slot toto</a>
+    <a href="https://flaghitcounter.com">vipslot55</a>
+<a href="https://www.universidaddelpedregal.edu.mx/Recorridovirtual">slot deposit 1000</a>
+    <a href="https://vipslot55.com/">vipslot 55</a>
+<a href="https://gestorescantabria.org/">slot 1000</a>
+</div>
+</body>
+</html>
+
+      
